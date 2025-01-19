@@ -1,0 +1,32 @@
+version: 2
+sources:
+  - name: dbt_con
+    database: raw
+    description: This is a replica of the Postgres database used by our app
+    schema: jaffle_shop
+    tables:
+     - name: customers
+       description: One record per customer.
+     - name: orders
+       description: One record per order. Includes cancelled and deleted orders.
+     - name: EMPLOYEE
+       columns:
+        - name: EMPID
+          tests:
+            - unique
+     - name: EMPLOYEE_snap
+     - name : CUSTOMERS_vw
+     
+              
+  - name: dbt_con1
+    database: raw
+    description: This is a replica of the Postgres database used by our app
+    schema: stripe
+    tables:
+       - name: payment
+         description: payment details of order.
+         
+        
+
+        
+     

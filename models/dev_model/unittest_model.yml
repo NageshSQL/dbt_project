@@ -1,0 +1,14 @@
+unit_tests:
+  - name: testsale
+    model: test_model
+    given:
+      - input: ref('cust_sales_model')
+        rows:
+          - { cust_id: 101, sale_amount: 1000 }
+          - { cust_id: 102, sale_amount: 2000 }
+          - { cust_id: 103, sale_amount: 3000 }
+    expect:
+      rows:
+        - { cust_id: 101, sale_amount: 1000, sales_flag: 1 }
+        - { cust_id: 102, sale_amount: 2000, sales_flag: 2 }
+        - { cust_id: 103, sale_amount: 3000, sales_flag: 3 }

@@ -1,0 +1,33 @@
+dbt_project:
+  outputs:
+    dev:
+      account: uuwsuzf-ehb33367
+      database: SALES_DB
+      password: H@rsha2012
+      role: ACCOUNTADMIN
+      schema: CUSTOMER_SCHEMA
+      threads: 5
+      type: snowflake
+      user: nagesht
+      warehouse: TEST_WH
+    dev1:
+      account: ooafsxc-lib13858
+      database: SALES_DB
+      password: H@rsha2012
+      role: ACCOUNTADMIN
+      schema: SALES_DB
+      threads: 5
+      type: snowflake
+      user: tatimatla
+      warehouse: COMPUTE_WH
+    dev2:
+      account: waquvrw-tzb66221
+      database: SALES_DB
+      password: H@rsha2012
+      role: ACCOUNTADMIN
+      schema: SALES_DBT
+      threads: 5
+      type: snowflake
+      user: nagesht
+      warehouse: COMPUTE_WH
+  target: dev2

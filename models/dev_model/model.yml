@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: dbt_raw_customer
+    columns: 
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+  - name: dbt_raw_orders
+    columns: 
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: "{{ doc('order_status') }}"
+        data_tests:
+          - accepted_values:
+              values:
+                  - completed
+                  - shipped
+                  - returned
+                  - return_pending
+                  - placed
+      - name: customer_id
+        description: Foreign key to stg_customers.customer_id.
+        tests:
+          - relationships:
+              to: ref('dbt_raw_customer')
+              field: customer_id
+  - name: dbt_raw_payment
+    columns: 
+      - name: amount
+        tests:
+          - not_null
