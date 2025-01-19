@@ -1,20 +1,12 @@
 {{
 config(
-    materialized = 'dynamic_table',
-    snowflake_warehouse = 'COMPUTE_WH',
-    target_lag = '1 MINUTE',
-    on_configuration_change = 'apply',
+    materialized = 'table'
 )
 }}
 
-with orders as  (
-    select * from {{ ref("dbt_raw_orders")}}
-),
-
-payments as (
+with payments as (
     select * from {{ ref("dbt_raw_payment") }}
 ),
-
 order_payments as (
     select
         order_id,
@@ -22,18 +14,6 @@ order_payments as (
 
     from payments
     group by 1
-),
-
- final as (
-
-    select
-        orders.order_id,
-        orders.customer_id,
-        orders.order_date,
-        coalesce (order_payments.amount, 0) as amount
-
-    from orders
-    left join order_payments using (order_id)
 )
 
-select * from final
+select * from order_payments

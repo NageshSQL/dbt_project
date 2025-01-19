@@ -15,7 +15,7 @@ sources:
           tests:
             - unique
      - name: EMPLOYEE_snap
-     - name : CUSTOMERS_vw
+     - name : CUST_TOTAL_ORDER
      
               
   - name: dbt_con1

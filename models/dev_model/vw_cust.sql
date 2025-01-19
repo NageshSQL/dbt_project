@@ -7,4 +7,4 @@
 
 select
 *
-from {{ source("dbt_con","CUSTOMERS_vw")}}
+from {{ source("dbt_con","CUST_TOTAL_ORDER")}}
