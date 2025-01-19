@@ -3,7 +3,7 @@ jobs:
     targetName: dev2
     schedule:
       type: cron
-      entries: ["*/10 * * * *"]
+      entries: ["0 12 * * *"]
     timeout: 2h30m
     steps:
       - name: run models
